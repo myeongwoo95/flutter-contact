@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,168 +9,195 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'MINI ADVENTURE', // 앱을 총칭하는 타이틀
-      home: Index(), //home은 index.html와 같은 존재
+      title: 'Appbar',
+      theme: ThemeData(
+          primarySwatch: Colors.red
+      ),
+      home: MyPage(),
     );
   }
 }
 
-class Index extends StatelessWidget {
-  const Index({Key? key}) : super(key: key);
+//toast message (잘 안됨...)
+/*class MyPage extends StatelessWidget {
+  const MyPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber[800],
       appBar: AppBar(
-        title: Text('MINI ADVENTURE'),
-        backgroundColor: Colors.amber[700],
+        title: Text('Toast message'),
         centerTitle: true,
-        elevation: 0,
       ),
 
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(30, 40, 0, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-
-          children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/sleeping_natalia.jpg'),
-                radius: 60.0,
-              ),
-            ),
-
-            Divider(
-              height: 60.0,
-              color: Colors.grey[850],
-              thickness: 0.5,
-              endIndent: 30.0,
-            ),
-
-            Text('NAME',
-            style: TextStyle(
-              color : Colors.white,
-              letterSpacing: 2.0) //일반 컬러
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Text('NATALIA',
-            style: TextStyle(
-              color : Colors.white,
-              letterSpacing: 2.0,
-              fontSize: 28.0,
-              fontWeight: FontWeight.bold),
-            ),
-
-            SizedBox(
-              height: 30.0,
-            ),
-
-            Text('POWER LEVEL',
-                style: TextStyle(
-                    color : Colors.white,
-                    letterSpacing: 2.0) //일반 컬러
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Text('100/100',
-              style: TextStyle(
-                  color : Colors.white,
-                  letterSpacing: 2.0,
-                  fontSize: 28.0,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 30.0,
-            ),
-            Row(
-              children: [
-                Icon(Icons.check_circle_outline),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text('Lazy in the morning',
-                    style: TextStyle(
-                        fontSize: 16.0,
-                        letterSpacing: 1.0
-                    )),
-              ],
-            ),
-            Row(
-              children: [
-                Icon(Icons.check_circle_outline),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text('Speaking polish',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  letterSpacing: 1.0
-                )),
-              ],
-            ),
-            Row(
-              children: [
-                Icon(Icons.check_circle_outline),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text('Right arm tattoo',
-                    style: TextStyle(
-                        fontSize: 16.0,
-                        letterSpacing: 1.0
-                    )),
-              ],
-            ),
-            Row(
-              children: [
-                Icon(Icons.check_circle_outline),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text('Nice personality',
-                    style: TextStyle(
-                        fontSize: 16.0,
-                        letterSpacing: 1.0
-                    )),
-              ],
-            ),
-            Row(
-              children: [
-                Icon(Icons.check_circle_outline),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text('beauty',
-                    style: TextStyle(
-                        fontSize: 16.0,
-                        letterSpacing: 1.0
-                    )),
-              ],
-            ),
-            Row(
-              children: [
-                Icon(Icons.check_circle_outline),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text('funny',
-                    style: TextStyle(
-                        fontSize: 16.0,
-                        letterSpacing: 1.0
-                    )),
-              ],
-            ),
-          ],
-        ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: (){
+            print("hello world!");
+          },
+          child: Text('Toast!!!'),
+          style: ButtonStyle(
+            textStyle:
+            MaterialStateProperty.all(TextStyle(fontSize: 14)),
+            foregroundColor:
+            MaterialStateProperty.all(Colors.white),
+          ),
+        )
       )
     );
   }
+}*/
+
+//Snack Bar
+/*class MyPage extends StatelessWidget {
+  const MyPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Snack Bar'),
+          centerTitle: true,
+        ),
+
+        body: Center(
+          child: ElevatedButton(
+            child: Text('Show me',
+              style: TextStyle(
+                color: Colors.white
+              ),
+            ),
+            style: ButtonStyle(
+              textStyle:
+              MaterialStateProperty.all(TextStyle(fontSize: 14)),
+              foregroundColor:
+              MaterialStateProperty.all(Colors.red),
+            ),
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text('show me button is clicked',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+                ),
+                backgroundColor: Colors.teal,
+                duration: Duration(milliseconds: 1000),
+              ));
+            },
+          ),
+        ),
+    );
+  }
+}*/
+
+//Appbar icon menu
+/*
+class MyPage extends StatelessWidget {
+  const MyPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Appbar icon menu'),
+        centerTitle: true,
+        elevation: 0.0,
+
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              print('shopping cart button is clicked');
+            },
+          ),
+
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              print('search button is clicked');
+            },
+          ),
+        ],
+      ),
+
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage('assets/dogi-coin.jpg'),
+                backgroundColor: Colors.white,
+              ),
+
+              otherAccountsPictures: [
+                CircleAvatar(
+                  backgroundImage: AssetImage('assets/sleeping_natalia.jpg'),
+                  backgroundColor: Colors.white,
+                ),
+              ],
+
+              accountName: Text('Dog'),
+              accountEmail: Text('Dog@gmail.com'),
+              onDetailsPressed: (){
+                print('arrow is clicked');
+              },
+              decoration: BoxDecoration(
+                color: Colors.red[200],
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(40.0),
+                  bottomRight: Radius.circular(40.0)
+                )
+              ),
+            ),
+
+            ListTile(
+              leading: Icon(Icons.home,
+              color: Colors.grey[850],
+              ),
+              title: Text('home'),
+              onTap: (){
+                print('Home is clicked');
+              },
+              trailing: Icon(Icons.add),
+            ),
+
+            ListTile(
+              leading: Icon(Icons.settings,
+                color: Colors.grey[850],
+              ),
+              title: Text('setting'),
+              onTap: (){
+                print('setting is clicked');
+              },
+              trailing: Icon(Icons.add),
+            ),
+
+            ListTile(
+              leading: Icon(Icons.question_answer,
+                color: Colors.grey[850],
+              ),
+              title: Text('Q&A'),
+              onTap: (){
+              },
+              trailing: Icon(Icons.add),
+            ),
+          ],
+        )
+      ),
+    );
+  }
 }
+*/
 
-
+void flutterToast(String msg){
+  Fluttertoast.showToast(
+      msg: msg,
+      gravity: ToastGravity.BOTTOM, //Toast 위치
+      backgroundColor: Colors.redAccent,
+      fontSize: 20.0,
+      textColor: Colors.white,
+      toastLength: Toast.LENGTH_SHORT
+  );
+}
